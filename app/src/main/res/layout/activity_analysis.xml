@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9FAFB">
+
+    <!-- 1. 상단 툴바 (REC 타이머 포함) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        android:elevation="1dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            android:src="@android:drawable/ic_menu_revert"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#2563EB" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="실시간 동작 분석"
+            android:textColor="#111827"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnBack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:gravity="end"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivProfile"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIVE ANALYSIS"
+                android:textColor="#9CA3AF"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="● REC 04:22"
+                android:textColor="#EF4444"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_profile_circle"
+            android:src="@android:drawable/sym_def_app_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 스크롤 컨텐츠 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@id/layoutToolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <!-- 2. 카메라 분석 영역 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutCameraView"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@drawable/bg_start_card"
+                android:backgroundTint="#111827"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:src="@android:drawable/ic_menu_crop"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#FFFFFF" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:rotation="90"
+                    android:src="@android:drawable/ic_menu_crop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="#FFFFFF" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="80dp"
+                    android:src="@android:drawable/ic_menu_camera"
+                    android:alpha="0.2"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tvLiveGuide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="110dp"
+                    android:background="@drawable/bg_badge"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="12dp"
+                    android:text="천천히 움직이세요"
+                    android:textColor="#2563EB"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent">
+                    <LinearLayout
+                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:background="@drawable/bg_white_card" android:backgroundTint="#FFEBEE"
+                        android:gravity="center" android:padding="12dp">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/stat_sys_warning" app:tint="#EF4444" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:text="왼쪽이 낮습니다" android:textColor="#EF4444" android:textSize="11sp" android:textStyle="bold" />
+                    </LinearLayout>
+                    <View android:layout_width="12dp" android:layout_height="0dp" />
+                    <LinearLayout
+                        android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:background="@drawable/bg_white_card" android:backgroundTint="#FFEBEE"
+                        android:gravity="center" android:padding="12dp">
+                        <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_dialog_alert" app:tint="#EF4444" />
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:text="상체가 기울어짐" android:textColor="#EF4444" android:textSize="11sp" android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 3. 데이터 그리드 (4개 카드) -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutDataGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/layoutCameraView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardAngle"
+                    android:layout_width="0dp" android:layout_height="110dp"
+                    android:background="@drawable/bg_white_card" android:padding="16dp"
+                    app:layout_constraintEnd_toStartOf="@id/cardBalance"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    <TextView android:id="@+id/t1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="관절 각도" android:textColor="#9CA3AF" android:textSize="11sp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="112 °" android:textColor="#111827" android:textSize="28sp" android:textStyle="bold" app:layout_constraintTop_toBottomOf="@id/t1" app:layout_constraintStart_toStartOf="parent"/>
+                    <ProgressBar style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="4dp" android:progress="65" android:progressTint="#2563EB" app:layout_constraintBottom_toBottomOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardBalance"
+                    android:layout_width="0dp" android:layout_height="110dp" android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_white_card" android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/cardAngle" app:layout_constraintTop_toTopOf="parent">
+                    <TextView android:id="@+id/t2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="좌우 대칭" android:textColor="#9CA3AF" android:textSize="11sp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="88 %" android:textColor="#111827" android:textSize="28sp" android:textStyle="bold" app:layout_constraintTop_toBottomOf="@id/t2" app:layout_constraintStart_toStartOf="parent"/>
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" app:layout_constraintBottom_toBottomOf="parent">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LEFT" android:textSize="8sp" android:textColor="#9CA3AF"/>
+                        <View android:layout_width="0dp" android:layout_height="2dp" android:layout_weight="1" android:layout_marginHorizontal="6dp" android:background="#2DD4BF"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="RIGHT" android:textSize="8sp" android:textColor="#9CA3AF"/>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardSim"
+                    android:layout_width="0dp" android:layout_height="110dp" android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_white_card" android:padding="16dp"
+                    app:layout_constraintEnd_toStartOf="@id/cardComp"
+                    app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/cardAngle">
+                    <TextView android:id="@+id/t3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="정상 유사도" android:textColor="#9CA3AF" android:textSize="11sp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView android:id="@+id/v3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="94 점" android:textColor="#111827" android:textSize="28sp" android:textStyle="bold" app:layout_constraintTop_toBottomOf="@id/t3" app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="↗ 최근 7일 대비 3% 상승" android:textColor="#0D9488" android:textSize="9sp" android:textStyle="bold" app:layout_constraintTop_toBottomOf="@id/v3" app:layout_constraintStart_toStartOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cardComp"
+                    android:layout_width="0dp" android:layout_height="110dp" android:layout_marginStart="12dp" android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_white_card" android:padding="16dp"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/cardSim" app:layout_constraintTop_toBottomOf="@id/cardBalance">
+                    <TextView android:id="@+id/t4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="보상 작용 감지" android:textColor="#9CA3AF" android:textSize="11sp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView android:id="@+id/v4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 회" android:textColor="#EF4444" android:textSize="28sp" android:textStyle="bold" app:layout_constraintTop_toBottomOf="@id/t4" app:layout_constraintStart_toStartOf="parent"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="골반 틀어짐, 어깨 과사용 주의" android:textColor="#9CA3AF" android:textSize="9sp" app:layout_constraintTop_toBottomOf="@id/v4" app:layout_constraintStart_toStartOf="parent"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 4. 다음 동작 안내 카드 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_feedback_card"
+                android:backgroundTint="#DBEAFE"
+                android:padding="24dp"
+                app:layout_constraintTop_toBottomOf="@id/layoutDataGrid">
+                <TextView android:id="@+id/lNext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="다음 동작 안내" android:textColor="#1E40AF" android:textStyle="bold" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="양팔을 어깨 높이까지 천천히 들어\n올리세요." android:textColor="#1E3A8A" android:textSize="14sp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toStartOf="@id/ivNext" app:layout_constraintTop_toBottomOf="@id/lNext"/>
+                <ImageView android:id="@+id/ivNext" android:layout_width="52dp" android:layout_height="52dp" android:background="@drawable/bg_circle_white_alpha" android:padding="12dp" android:src="@android:drawable/ic_menu_myplaces" app:tint="#1E40AF" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 5. [추가] 재활 치료 스스로 종료 버튼 (중앙 정렬) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnStopRehab"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_marginTop="32dp"
+                android:text="재활 치료 종료하기"
+                android:textColor="#EF4444"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:strokeColor="#EF4444"
+                app:strokeWidth="2dp"
+                app:cornerRadius="16dp"
+                app:layout_constraintTop_toBottomOf="@id/cardNext"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- 6. 분석 히스토리 -->
+            <TextView android:id="@+id/headerHist" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36dp" android:text="분석 히스토리" android:textColor="#111827" android:textSize="20sp" android:textStyle="bold" app:layout_constraintTop_toBottomOf="@id/btnStopRehab" app:layout_constraintStart_toStartOf="parent"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="전체보기" android:textColor="#2563EB" android:textSize="12sp" app:layout_constraintBottom_toBottomOf="@id/headerHist" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/headerHist"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_white_card"
+                android:padding="20dp" app:layout_constraintTop_toBottomOf="@id/headerHist">
+                <TextView android:id="@+id/hDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_light_chip" android:paddingHorizontal="10dp" android:paddingVertical="4dp" android:text="2024.05.20" android:textColor="#9CA3AF" android:textSize="11sp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Perfect" android:textColor="#0D9488" android:textStyle="bold" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+                <TextView android:id="@+id/hTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="오전 어깨 가동 범위 훈련" android:textColor="#111827" android:textStyle="bold" android:textSize="16sp" app:layout_constraintTop_toBottomOf="@id/hDate" app:layout_constraintStart_toStartOf="parent"/>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:orientation="horizontal" app:layout_constraintTop_toBottomOf="@id/hTitle" app:layout_constraintStart_toStartOf="parent">
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/ic_menu_recent_history" app:tint="#4B5563"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:text="12:45" android:textColor="#4B5563" android:textSize="13sp"/>
+                    <View android:layout_width="20dp" android:layout_height="0dp"/>
+                    <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@android:drawable/checkbox_on_background" app:tint="#4B5563"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="6dp" android:text="98%" android:textColor="#4B5563" android:textSize="13sp"/>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 하단 고정 네비게이션 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:itemIconTint="#0F69C0"
+        app:itemTextColor="#0F69C0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

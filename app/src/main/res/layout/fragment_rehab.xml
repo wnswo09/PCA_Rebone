@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9FAFB">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="24dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <!-- 헤더 영역 -->
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_menu_revert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#2563EB" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="재활 홈"
+                android:textColor="#111827"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/btnBack"
+                app:layout_constraintStart_toEndOf="@id/btnBack"
+                app:layout_constraintTop_toTopOf="@id/btnBack" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/sym_def_app_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- 메인 제목 -->
+            <TextView
+                android:id="@+id/tvMainHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="오늘의 재활"
+                android:textColor="#111827"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <TextView
+                android:id="@+id/tvSubHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="오늘도 한 걸음 더 나아가는 당신을 응원합니다. 맞춤형 세션이 준비되었습니다."
+                android:textColor="#6B7280"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMainHeader" />
+
+            <!-- 필터 칩 영역 -->
+            <HorizontalScrollView
+                android:id="@+id/layoutChips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:scrollbars="none"
+                app:layout_constraintTop_toBottomOf="@id/tvSubHeader">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_blue_chip"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        android:text="전체"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_light_chip"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        android:text="스트레칭"
+                        android:textColor="#6B7280" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_light_chip"
+                        android:paddingHorizontal="20dp"
+                        android:paddingVertical="10dp"
+                        android:text="근력 운동"
+                        android:textColor="#6B7280" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 운동 리스트 섹션 -->
+            <!-- 1. 스트레칭 -->
+            <View
+                android:id="@+id/indicatorStretch"
+                android:layout_width="4dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="32dp"
+                android:background="#2DD4BF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutChips" />
+
+            <TextView
+                android:id="@+id/tvStretchTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="스트레칭"
+                android:textColor="#111827"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/indicatorStretch"
+                app:layout_constraintStart_toEndOf="@id/indicatorStretch"
+                app:layout_constraintTop_toTopOf="@id/indicatorStretch" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardStretch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_white_card"
+                android:padding="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tvStretchTitle">
+
+                <TextView
+                    android:id="@+id/tvEx1Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="목 회전 운동"
+                    android:textColor="#111827"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_mint_chip"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="● AI분석"
+                    android:textColor="#0D9488"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvEx1Part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="대상 부위: 경추 및 어깨"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEx1Title" />
+
+                <ProgressBar
+                    android:id="@+id/pbEx1"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="16dp"
+                    android:progress="30"
+                    android:progressTint="#0D9488"
+                    app:layout_constraintEnd_toStartOf="@id/tvEx1Level"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEx1Part" />
+
+                <TextView
+                    android:id="@+id/tvEx1Level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="난이도: 하"
+                    android:textColor="#6B7280"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="@id/pbEx1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/pbEx1" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartRehab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#0F69C0"
+                    android:text="시작 ▶"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/pbEx1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 2. 근력 운동 -->
+            <View
+                android:id="@+id/indicatorMuscle"
+                android:layout_width="4dp"
+                android:layout_height="16dp"
+                android:layout_marginTop="32dp"
+                android:background="#2563EB"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardStretch" />
+
+            <TextView
+                android:id="@+id/tvMuscleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="근력 운동"
+                android:textColor="#111827"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/indicatorMuscle"
+                app:layout_constraintStart_toEndOf="@id/indicatorMuscle"
+                app:layout_constraintTop_toTopOf="@id/indicatorMuscle" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardMuscle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_white_card"
+                android:padding="20dp"
+                app:layout_constraintTop_toBottomOf="@id/tvMuscleTitle">
+
+                <TextView
+                    android:id="@+id/tvEx2Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="앉아서 다리 들기"
+                    android:textColor="#111827"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_light_chip"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="4dp"
+                    android:text="분석 미지원"
+                    android:textColor="#9CA3AF"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvEx2Part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="대상 부위: 대퇴사두근"
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEx2Title" />
+
+                <ProgressBar
+                    android:id="@+id/pbEx2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="16dp"
+                    android:progress="60"
+                    android:progressTint="#2563EB"
+                    app:layout_constraintEnd_toStartOf="@id/tvEx2Level"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEx2Part" />
+
+                <TextView
+                    android:id="@+id/tvEx2Level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="난이도: 중"
+                    android:textColor="#6B7280"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="@id/pbEx2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/pbEx2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#0F69C0"
+                    android:text="시작 ▶"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:layout_constraintTop_toBottomOf="@id/pbEx2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- 3. 연속 달성 카드 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_feedback_card"
+                android:padding="24dp"
+                app:layout_constraintTop_toBottomOf="@id/cardMuscle">
+
+                <TextView
+                    android:id="@+id/tvStreakTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="연속 재활 달성 중!"
+                    android:textColor="#0D9488"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/tvStreakDays"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="이미 5일 연속으로 운동을\n완료하셨네요."
+                    android:textColor="#6B7280"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toStartOf="@id/tvStreakDays"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStreakTitle" />
+
+                <TextView
+                    android:id="@+id/tvStreakDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="05"
+                    android:textColor="#0D9488"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DAYS\nSTREAK"
+                    android:textColor="#0D9488"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    app:layout_constraintEnd_toEndOf="@id/tvStreakDays"
+                    app:layout_constraintStart_toStartOf="@id/tvStreakDays"
+                    app:layout_constraintTop_toBottomOf="@id/tvStreakDays" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
