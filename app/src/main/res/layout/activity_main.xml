@@ -5,8 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F4F6"
+    android:background="#F9FAFB"
     tools:context=".MainActivity">
+
+    <!-- GuideLine for Vertical Spacing -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.04" />
 
     <!-- 로고 -->
     <ImageView
@@ -18,105 +26,90 @@
         android:contentDescription="@string/logo_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.42"
-        android:layout_marginTop="110dp" />
+        app:layout_constraintTop_toTopOf="@id/glTop"
+        app:layout_constraintWidth_percent="0.45" />
 
-    <!-- 배지 -->
+    <!-- 배지 (전문 AI 재활 도우미) -->
     <TextView
         android:id="@+id/tvBadge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="척수 손상 전문 AI 재활"
-        android:textColor="#1F2A44"
+        android:text="@string/badge_text"
+        android:textColor="#1E40AF"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:background="@drawable/bg_badge"
-        android:paddingHorizontal="26dp"
-        android:paddingVertical="10dp"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
         app:layout_constraintTop_toBottomOf="@id/ivLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="120dp"/>
+        android:layout_marginTop="80dp"/>
 
-    <!-- 메인 타이틀 1 -->
+    <!-- 메인 타이틀 (당신의 일상을 위한 새로운 움직임의 시작) -->
     <TextView
-        android:id="@+id/tvTitleTop"
+        android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="당신의 일상을 위한"
-        android:textColor="#12161D"
+        android:text="@string/title_text"
+        android:textColor="#111827"
         android:textStyle="bold"
-        android:textSize="40sp"
+        android:textSize="34sp"
         android:gravity="center"
+        android:lineSpacingExtra="8dp"
         app:layout_constraintTop_toBottomOf="@id/tvBadge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="34dp"
-        android:layout_marginHorizontal="28dp"/>
+        android:layout_marginTop="24dp"
+        android:layout_marginHorizontal="32dp"/>
 
-    <!-- 메인 타이틀 2 -->
-    <TextView
-        android:id="@+id/tvTitleBottom"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="새로운 움직임의 시작"
-        android:textColor="#0F69C0"
-        android:textStyle="bold"
-        android:textSize="40sp"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleTop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginHorizontal="28dp"/>
-
-    <!-- 설명 -->
+    <!-- 설명 (최첨단 AI 분석 기술을 통해...) -->
     <TextView
         android:id="@+id/tvDesc"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="최첨단 AI 동작 분석 기술로 척수 손상 환우분들의 건강한 회복 여정을 정밀하고 따뜻하게 지원합니다."
-        android:textColor="#3F4754"
-        android:textSize="20sp"
-        android:lineSpacingExtra="10dp"
+        android:text="@string/desc_text"
+        android:textColor="#4B5563"
+        android:textSize="18sp"
+        android:lineSpacingExtra="6dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleBottom"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="28dp"
         android:layout_marginHorizontal="40dp"/>
 
     <!-- 시작 버튼 -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnStart"
         android:layout_width="0dp"
-        android:layout_height="76dp"
-        android:text="시작하기  →"
+        android:layout_height="72dp"
+        android:text="@string/start_text"
         android:textAllCaps="false"
         android:textStyle="bold"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textColor="@android:color/white"
-        android:backgroundTint="#0F69C0"
-        app:cornerRadius="24dp"
+        android:backgroundTint="#1565C0"
+        app:cornerRadius="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDesc"
-        android:layout_marginTop="78dp"
-        android:layout_marginHorizontal="24dp"
-        android:elevation="8dp"/>
+        android:layout_marginTop="60dp"
+        android:layout_marginHorizontal="32dp"
+        android:elevation="6dp"
+        android:stateListAnimator="@null" />
 
     <!-- 하단 카피라이트 -->
     <TextView
         android:id="@+id/tvCopy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="© 2026 RehabAI Medical Solutions."
+        android:text="@string/copyright_text"
         android:textColor="#9CA3AF"
-        android:textSize="14sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="28dp"/>
+        android:layout_marginBottom="24dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
